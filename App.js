@@ -96,18 +96,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#00aeef",
+    backgroundColor: "white",
   },
 
   img: {
-
+    height: 400,
+    width: 400,
   },
 
   btn: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     height: 40,
     margin: 17,
     borderRadius: 9,
@@ -116,20 +117,21 @@ const styles = StyleSheet.create({
   btnTexto: {
     fontSize: 20, 
     fontWeight: "bold",
-    color: "#00aeef",
+    color: "white",
   },
 
   btnArea: {
     flexDirection: "row",
-    marginTop: 70,
+    marginTop: 100,
+    width: 350,
     height: 40,
   },
 
   textoCronometro: {
-    color: "white",
-    fontSize: 65,
+    color: "black",
+    fontSize: 100,
     fontWeight: "bold",
-    marginTop: -160,
+    marginTop: -230,
   },
 });
 
