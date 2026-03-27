@@ -45,15 +45,13 @@ class App extends Component {
 
   // funcao de reiniciar cronometro
   limpar() {
-      clearInterval(this.timer)
-      this.timer = null;
+    clearInterval(this.timer)
+    this.timer = null;
 
-      this.setState ({
-        botao: "Iniciar",
-        numero: 0,
-      })
-    }
-
+    this.setState ({
+      botao: "Iniciar",
+      numero: 0,
+    })
   }
 
   // renderização da tela
@@ -89,8 +87,8 @@ class App extends Component {
         </View>
       </View>
     );
-  }
-}
+  };
+};
 
 // estilização
 const styles = StyleSheet.create({
