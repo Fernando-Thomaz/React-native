@@ -12,6 +12,8 @@ class App extends Component {
     this.state = {
       numero: 0,
       botao: "Iniciar",
+      historico: [],
+      lista: [],
     };
 
     // definir o tempo como nulo
@@ -23,6 +25,8 @@ class App extends Component {
     // definir a funcao limpar
     this.limpar = this.limpar.bind(this)
 
+    // definir a funcao de historico
+    this.historico = this.historico.bind(this)
   }
 
   // funções
@@ -52,6 +56,22 @@ class App extends Component {
       botao: "Iniciar",
       numero: 0,
     })
+
+    this.historico()
+  }
+
+  historico() {
+    if (this.state.numero != 0){
+      if (this.state.historico != ""){
+        this.state.historico.push("/",this.state.numero.toFixed(1))
+      }
+      else {
+        this.state.historico.push(this.state.numero.toFixed(1))
+      }
+      this.setState ({
+        lista: this.state.historico.slice(-9)
+      })
+    }
   }
 
   // renderização da tela
@@ -60,11 +80,19 @@ class App extends Component {
     return (
       // body
       <View style={styles.container}>
-        {/* imagem na tela */}
-        <Image style={styles.img} source={require("./assets/cronometro.png")}/>
 
-        {/* numero do cronometro */}
-        <Text style={styles.textoCronometro}>{this.state.numero.toFixed(1)}</Text>
+        {/* container do cronometro */}
+        <View style={styles.containerCronometro}>
+
+          {/* gif do relogio */}
+          <Image style={styles.gif} source={require("./assets/viaductk-time-slip-7514.gif")}/>
+
+          {/* imagem na tela */}
+          <Image style={styles.img} source={require("./assets/cronometro.png")}/>
+
+          {/* numero do cronometro */}
+          <Text style={styles.textoCronometro}>{this.state.numero.toFixed(1)}</Text>
+        </View>
 
         {/* container de botão*/}
         <View style={styles.btnArea}>
@@ -85,6 +113,15 @@ class App extends Component {
 
           </TouchableOpacity>
         </View>
+
+        {/* container do historico */}
+        <View style={styles.containerRecentes}>
+
+            <Text style={styles.historicoTexto}>histórico:</Text>
+
+            {/* mostra a lista de valores do historico */}
+            <Text style={styles.historicoTexto}>{this.state.lista}</Text>
+        </View>
       </View>
     );
   };
@@ -92,6 +129,12 @@ class App extends Component {
 
 // estilização
 const styles = StyleSheet.create({
+  containerCronometro: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 100,
+  },
+
   container: {
     flex: 1,
     alignItems: "center",
@@ -122,7 +165,7 @@ const styles = StyleSheet.create({
 
   btnArea: {
     flexDirection: "row",
-    marginTop: 100,
+    marginTop: 130,
     width: 350,
     height: 40,
   },
@@ -131,9 +174,32 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 100,
     fontWeight: "bold",
-    marginTop: -230,
+    marginTop: -210,
+  },
+
+  containerRecentes: {
+    backgroundColor: "gray",
+    marginTop: 80,
+    width: 300,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  historicoTexto: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "black"
+  },
+
+  gif: {
+    width: 320,
+    height: 320,
+    opacity: 0.5,
+    marginBottom: -400,
   },
 });
 
 // exporta o App pro index
 export default App;
+
+// npx expo start para iniciar o app
