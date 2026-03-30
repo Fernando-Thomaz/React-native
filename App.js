@@ -115,12 +115,15 @@ class App extends Component {
         </View>
 
         {/* container do historico */}
-        <View style={styles.containerRecentes}>
+        <View style={styles.containerHistorico}>
 
-            <Text style={styles.historicoTexto}>histórico:</Text>
+            <Text style={styles.historicoTitulo}>histórico:</Text>
+
+          <View style={styles.containerRecentes}>
 
             {/* mostra a lista de valores do historico */}
             <Text style={styles.historicoTexto}>{this.state.lista}</Text>
+          </View>
         </View>
       </View>
     );
@@ -178,14 +181,28 @@ const styles = StyleSheet.create({
   },
 
   containerRecentes: {
-    backgroundColor: "gray",
-    marginTop: 80,
-    width: 300,
+    backgroundColor: "black",
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 9,
+  },
+
+  containerHistorico: {
+    width: "90%",
+    marginTop: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 9,
   },
 
   historicoTexto: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "white"
+  },
+
+  historicoTitulo: {
     fontSize: 35,
     fontWeight: "bold",
     color: "black"
